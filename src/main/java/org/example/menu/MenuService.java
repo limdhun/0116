@@ -1,8 +1,11 @@
 package org.example.menu;
 
+import org.example.ex.A1;
+
 import java.util.ArrayList;
 
 public abstract class MenuService {
+    @A1
     //추상화된 코딩.
     //구체적인 하위 하나 하나를 만드는 코딩이 아니라, 가능하면 부모 클래스를 보며 만드는 코딩
     //메뉴의 목록을 받는 게 우리가 원하는 기능

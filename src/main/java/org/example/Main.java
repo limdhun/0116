@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.ex.Ex1;
 import org.example.menu.ComposeMenuService;
 import org.example.menu.MegaMenuService;
 import org.example.menu.Menu;
@@ -12,19 +13,37 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args)throws Exception {
-        HashMap<String, MenuService> map = new HashMap<>();
-        map.put("mega", new MegaMenuService());
-        map.put("compose", new ComposeMenuService());
-        //-----------------------
-        MenuService menuService = map.get("mega");
-        menuService.getMenuList();
+        //ArrayList 쓰지 말고 인터페이스 List 쓰기. 그래야 나중에 유연하게 변경 가능함
+
+        List<LottoBall> ballList = new ArrayList<>();
+        //컴파일러가 보는건 타입 정보. List ballList에 add가 잇음?
+        for (int i = 0; i < 45; i++) {
+            ballList.add(new LottoBall(i));
+        }
+        Collections.shuffle(ballList);
+        List<LottoBall> result = ballList.subList(0,6);
+        System.out.println(result);
+        result.sort((b1,b2) -> b1.getNum() - b2.getNum());//람다식에서, return 키워드 안써도 됨
+        System.out.println(result);
+
+
+        
+//        Ex1 obj1 = new Ex1();
+//        Ex1 obj2 = new Ex1();
+
+
+
+
+//        HashMap<String, MenuService> map = new HashMap<>();
+//        map.put("mega", new MegaMenuService());
+//        map.put("compose", new ComposeMenuService());
+//        //-----------------------
+//        MenuService menuService = map.get("mega");
+//        menuService.getMenuList();
 
 
 
